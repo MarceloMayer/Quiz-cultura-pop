@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <!--CSS PROPRIO-->
+    <link rel="stylesheet" href="style.css">
+
+    <title>Quiz</title>
+</head>
+
+<body onload="carregar()">
+    <main class="container tela-principal">
+        <section class="conteudos">
+            <h1>Pop Quiz</h1>
+            <article class="centro" id="intrucoes">
+                Leia a questão e clique na resposta correta
+            </article>
+            <article class="questoes">
+                <header class="questao">
+                    <span id="numQuestao"></span>
+                    <h2 id="pergunta"></h2>
+                </header>
+                <div class="corpo">
+                    <ol type="A" id="alternativas">
+                        <li id="a" value="1A" class="respostas" onclick="verificarSeAcertou(this, this)"></li>
+                        <li id="b" value="1B" class="respostas" onclick="verificarSeAcertou(this, this)"></li>
+
+                        <li id="c" value="1C" class="respostas" onclick="verificarSeAcertou(this, this)"></li>
+                    </ol>
+                </div>
+            </article>
+
+            <article id="aviso">Questão <span id="numero"></span> de <span id="total"></span></article>
+
+        </section>
+        <footer class="centro">Desenvolvido por Marcelo Mayer &copy; 2022</footer>
+    </main>
+    <!--JS PROPRIO-->
+    <script src="script.js"></script>
+</body>
+
+</html>
