@@ -4,6 +4,12 @@ let aviso = document.querySelector('#aviso')
 let pontos = 0//pontos para o placar
 let placar = 0//placar
 
+//audios
+
+let somAcerto = document.querySelector('#somAcerto')
+let somErro = document.querySelector('#somErro')
+let somAplausos = document.querySelector('#somAplausos')
+
 //pergunta
 let numQuestao = document.querySelector('#numQuestao')
 let pergunta = document.querySelector('#pergunta')
@@ -110,24 +116,48 @@ function proximaQuestao(nQuestao) {
     b.setAttribute('value', nQuestao + 'B')
     c.setAttribute('value', nQuestao + 'C')
 }
+//verificar se duplo click, contaria 2x
+alternativas.addEventListener('dblclick', ()=>{
+    pontos-= 10
+    if (numQuestao.value == 10 && pontos == 60) {pontos = 50 }
+})
 function bloquearAlternativas() {
-    a.classList.add('bloqueado')
-    b.classList.add('bloqueado')
-    c.classList.add('bloqueado')
+    alternativas.classList.add('bloqueado')
+  
 }
 function desbloquearAlternativas() {
-    a.classList.remove('bloqueado')
-    b.classList.remove('bloqueado')
-    c.classList.remove('bloqueado')
+    alternativas.classList.remove('bloqueado')
+}
+function piscarNoAcerto() {
+    articleQuestoes.classList.remove('errou')
+    articleQuestoes.classList.add('acertou')
+}
+function piscarNoErro() {
+    articleQuestoes.classList.remove('acertou')
+    articleQuestoes.classList.add('errou')
+}
+function tirarPiscar() {
+    articleQuestoes.classList.remove('acertou')
+    articleQuestoes.classList.remove('errou')
 }
 function verificarSeAcertou(nQuestao, resposta) {
     let numeroDaQuestao = nQuestao.value
     let respostaEscolhida = resposta.textContent
     let certa = questoes[numeroDaQuestao].correcta
+
     if (respostaEscolhida == certa) {
+
+        piscarNoAcerto()
+        somAcerto.play()
+
         pontos += 10
     } else {
+        piscarNoErro()
+        somErro.play()
     }
+    setTimeout(() => {
+        tirarPiscar()
+    }, 150);
 
     //atualizar placar
     placar = pontos
@@ -149,6 +179,7 @@ function verificarSeAcertou(nQuestao, resposta) {
 
 }
 function fimDoJogo() {
+    somAplausos.play()
     intrucoes.textContent = 'Fim de Jogo'
     numQuestao.textContent = ''
     let pont = ''

@@ -91,30 +91,19 @@ h1 {
 #aviso{
     color: #00b0ff;
 }
-/*ANIMAÇÃO*/
-@keyframes piscar{
-    0%{
-        filter: drop-shadow(0 0 15px #00b0ff);
-        -webkit-filter: drop-shadow(0 0 15px #00b0ff);
-        -moz-filter:drop-shadow(0 0 15px #00b0ff);
-        -o-filter:drop-shadow(0 0 15px #00b0ff);
-        -ms-filter:drop-shadow(0 0 15px #00b0ff);
-    }
-    100%{
-    }
-}
-.animar{
-    animation: piscar .75s infinite alternate;
-}
-.aparecer{
-    animation: aparecer .5s infinite alternate;
+.acertou {
+    background: rgb(28, 179, 46);
+    animation: aparecer 0.1s infinite alternate;
 }
 
-@keyframes aparecer{
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
+.errou {
+    background: red;
+    animation: aparecer 0.1s infinite alternate;
+}
+
+.placar {
+    padding: 1rem;
+    border-radius: 8px;
+    background:#03a9f4;
+    font-size: 2rem;
 }
